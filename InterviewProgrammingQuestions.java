@@ -1,5 +1,7 @@
 // Programming Questions
 
+import java.util.Arrays;
+
 class InterviewProgrammingQuestions{
 // 1. Reverse a String:
 // Write a Java program to reverse a given string
@@ -101,7 +103,7 @@ class InterviewProgrammingQuestions{
 // Ouput Prime Number
 // 1<=n
     public static String isPrime(int n){
-        
+
         if(n == 1)return "Not a Prime Number";
         for(int i = 2; i <= (int)Math.sqrt(n); i++){
 
@@ -110,6 +112,30 @@ class InterviewProgrammingQuestions{
             }
         }
         return "Prime Number";
+    }
+
+// 7. String Anagrams:
+// Determine if two strings are anagrams of each other.
+
+// Ex:-       Input                 Output
+        // 1. listen silent -->     Anagrams
+        // 2. triangle integral --> Anagrams
+        // 3. credit debit -->      Not Anagrams
+    public static String isAnagrams(String s1, String s2){
+
+        char arr1[] = s1.toCharArray();//{l,i,s,t,e,n}
+        char arr2[] = s2.toCharArray();//{s,i,l,e,n,t}
+        Arrays.sort(arr1);//{e,i,l,n,s,t}
+        Arrays.sort(arr2);//{e,i,l,n,s,t}
+
+        if(arr1.length != arr2.length)return "Not Anagrams";
+
+        for(int i = 0; i < arr1.length; i++){
+            if(arr1[i] != arr2[i]){
+                return "Not Anagrams";
+            }
+        }
+        return "Anagrams";
     }
 
 
@@ -141,6 +167,10 @@ class InterviewProgrammingQuestions{
 
         // int n = 121;
         // System.out.println(isPrime(n));
+
+        // String s1 = "credit";
+        // String s2 = "credit";
+        // System.out.println(isAnagrams(s1, s2));
 
     }
 }
