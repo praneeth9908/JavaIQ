@@ -1,6 +1,11 @@
 // Programming Questions
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Map;
 
 class InterviewProgrammingQuestions{
 // 1. Reverse a String:
@@ -241,6 +246,59 @@ class InterviewProgrammingQuestions{
         }
     }
 
+// 9. Binary Search:
+// Implement a binary search algorithm to find an element in a sorted array.
+
+// Ex:- 
+// Input:- l = {1, 2, 3, 4, 5} k = 4
+// Output:- true
+    public static boolean binarySearch(int[] arr, int k){
+
+        int l = 0, r = arr.length-1, m;
+        // quickSort(arr, l, r); if array is not sorted.
+
+        while(l < r){
+
+            m = l + (r - l)/2;
+            if(arr[m] == k){
+                return true;
+            }
+            else if(arr[m] > k){
+                r = m - 1;
+            }
+            else{
+                l = m + 1;
+            }
+        }
+
+        return false;
+    }
+
+// 10. Duplicate Elements in an Array:
+// Find and print duplicate elements in an array.
+
+// Ex:- 
+// Input:- arr[] = {3, 5, 1, 2, 3, 4, 5, 6, 3};
+// Ouput:- {3, 5}
+
+    public static ArrayList<Integer> duplicateElementsInArray(int[] arr){
+
+        ArrayList<Integer> res = new ArrayList<>();
+        Map<Integer, Integer> temp = new HashMap<>();
+
+        for(int ele: arr){
+            temp.put(ele, temp.getOrDefault(ele,0) + 1);
+        }
+
+        for(Map.Entry<Integer, Integer> entry: temp.entrySet()){
+            if(entry.getValue() > 1){
+                res.add(entry.getKey());
+            }
+        }
+
+        return res;
+    }
+
     public static void printArray(int arr[]){
         for(int i = 0; i < arr.length; i++){
             System.out.print(arr[i] + " ");
@@ -288,6 +346,14 @@ class InterviewProgrammingQuestions{
         // quickSort(arr, l, r);
         // printArray(arr);
 
+        // int arr[] = {3, 5, 1, 8, 7, 2345, 9876, 45, 987, 0, 2, 3, 4, 5, 6, 3};
+        // int k = 2345;
+        // boolean res = binarySearch(arr, k);
+        // System.err.println(res);
+
+        // int arr[] = {3, 5, 1, 2, 3, 4, 5, 6, 3};
+        // ArrayList<Integer> res = duplicateElementsInArray(arr);
+        // System.out.println(res);
 
     }
 }
