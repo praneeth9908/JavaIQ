@@ -1,5 +1,12 @@
 // Programming Questions
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -64,18 +71,22 @@ class InterviewProgrammingQuestions{
 // Ex:-
 // Input:- 5
 // Output:- 120
+
+// 20. Recursive Algorithm:
+// Solve a problem using recursion.
     public static int factorialNumber(int n){
 
-        int res = 1;
-        int i = 1;
+        if(n==1)return 1;
+        return n*factorialNumber(n-1);
 
-        while(i <= n){
+        // int res = 1;
+        // int i = 1;
 
-            res *= i;
-            i += 1;
-
-        }
-        return res;
+        // while(i <= n){
+        //     res *= i;
+        //     i += 1;
+        // }
+        // return res;
         
     }
 
@@ -178,7 +189,6 @@ class InterviewProgrammingQuestions{
             merge(arr, l, r, m);
         }
     }
-
 
     private static void merge(int[] arr, int l, int r,int m) {
         int[] arr1 = new int[m - l + 1];
@@ -299,14 +309,59 @@ class InterviewProgrammingQuestions{
         return res;
     }
 
+// 16. Exception Handling:
+// Write code that demonstrates the use of try-catch blocks to handle exceptions.
+    public static void divisionExceptionHandling(int a, int b){
+        int z;
+        try{
+            z = a/b;
+            System.out.println("Result:- "+z);
+        }
+        catch(Exception e){
+            System.out.println(e);
+            System.out.println("Denominator cannot be 0");
+        }
+        finally{
+            System.out.println("Division Completed");
+            
+        }
+    }
+
+// 17. File I/O:
+// Read from and write to a file using Java's file I/O capabilities.
+    public static void readFile(String fileName) throws Exception {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } 
+    }
+
+    public static void writeFile(String fileName){
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+            writer.write("Hello!\n");
+            writer.write("This is a Writer File.\n");
+            writer.write("This file is used to write the file using BufferedWriter.\n");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void printArray(int arr[]){
         for(int i = 0; i < arr.length; i++){
             System.out.print(arr[i] + " ");
         }
     }
+    
 
-
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception{
 
         // String str = "Java Programing Language";
         // System.out.println(reverseString(str));
@@ -354,6 +409,16 @@ class InterviewProgrammingQuestions{
         // int arr[] = {3, 5, 1, 2, 3, 4, 5, 6, 3};
         // ArrayList<Integer> res = duplicateElementsInArray(arr);
         // System.out.println(res);
+
+        // int a = 2, b = 1;
+        // divisionExceptionHandling(a, b);
+        
+        // String file= "reader.txt";
+        // readFile(file);
+
+        // String file = "writer.txt";
+        // writeFile(file);
+        // readFile(file);
 
     }
 }
