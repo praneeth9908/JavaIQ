@@ -1,0 +1,3 @@
+Hello!
+This is a Writer File.
+This file is used to write the file using BufferedWriter.

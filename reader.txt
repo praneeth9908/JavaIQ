@@ -1,0 +1,3 @@
+Hello!
+This is a Reader File.
+This file is used to read the file using BufferedReader.
