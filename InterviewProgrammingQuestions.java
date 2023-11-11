@@ -295,7 +295,7 @@ class InterviewProgrammingQuestions{
 
         ArrayList<Integer> res = new ArrayList<>();
         Map<Integer, Integer> temp = new HashMap<>();
-
+    
         for(int ele: arr){
             temp.put(ele, temp.getOrDefault(ele,0) + 1);
         }
